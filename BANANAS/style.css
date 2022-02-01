@@ -1,3 +1,119 @@
+@import url('http://fonts.cdnfonts.com/css/american-typewriter');
+
 body{
-    color:blue;
+    display: flex;
+    flex-direction: column;
+    margin: 150px;
+    font-family: 'American Typewriter', sans-serif;
+}
+
+img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.upperContainer{
+    border: 20px solid black;
+}
+
+.titleText{
+    text-align: center;
+    font-size: 100px;
+}
+
+.titleSubText{
+    text-align: center;
+    font-size: 35px;
+    color: gray;
+}
+
+.bananaContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+}
+
+.banana{
+    width: 300px;
+    height: 300px;
+}
+
+
+@keyframes MoveUpDown {
+    0%, 100% {
+      transform: translateY(-25px);
+    }
+    50% {
+      transform: translateY(0px);
+    }
+  }
+
+#left{
+    animation: MoveUpDown 2s linear infinite;
+    animation-delay: 0;
+}
+
+#center{
+    animation: MoveUpDown 2s linear infinite;
+    animation-delay: .25s;
+}
+
+#right{
+    animation: MoveUpDown 2s linear infinite;
+    animation-delay: .5s;
+}
+
+.resultText{
+    text-align: center;
+    padding: 20px;
+}
+
+.lowerContainer{
+    border: 2px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    margin: 5px;
+}
+
+.playerContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+}
+
+.playerIcon{
+    height: 100px;
+    width: 50px;
+}
+
+.scoreUnit{
+    height: 50px;
+    width: 50px;
+    background-color: yellow;
+}
+
+.boom{
+    height: 100px;
+    width: 100px;
+    background-color: orange;
+    align-self: center;
+}
+
+.computerContainer{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 5px;
+
+}
+
+.computerIcon{
+    height: 100px;
+    width: 50px;
+    align-self: center;
 }
