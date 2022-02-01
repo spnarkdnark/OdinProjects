@@ -13,7 +13,10 @@ img{
 }
 
 .upperContainer{
-    border: 20px solid black;
+    border: 10px solid black;
+    background-image: url("assets/background.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .titleText{
@@ -50,17 +53,17 @@ img{
   }
 
 #left{
-    animation: MoveUpDown 2s linear infinite;
+    animation: MoveUpDown 1.5s linear infinite;
     animation-delay: 0;
 }
 
 #center{
-    animation: MoveUpDown 2s linear infinite;
+    animation: MoveUpDown 1.5s linear infinite;
     animation-delay: .25s;
 }
 
 #right{
-    animation: MoveUpDown 2s linear infinite;
+    animation: MoveUpDown 1.5s linear infinite;
     animation-delay: .5s;
 }
 
@@ -70,7 +73,7 @@ img{
 }
 
 .lowerContainer{
-    border: 2px solid black;
+    background-color: lightyellow;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
