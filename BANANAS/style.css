@@ -5,6 +5,9 @@ body{
     flex-direction: column;
     margin: 150px;
     font-family: 'American Typewriter', sans-serif;
+    background-image: url("assets/forest_background.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 img{
@@ -12,11 +15,14 @@ img{
     max-height: 100%;
 }
 
+img:hover{
+    max-width:105%;
+    max-height:105%;
+}
+
 .upperContainer{
-    border: 10px solid black;
-    background-image: url("assets/background.jpeg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    border: 3px solid black;
+  background-color: white;
 }
 
 .titleText{
@@ -69,7 +75,7 @@ img{
 
 .resultText{
     text-align: center;
-    padding: 20px;
+    margin-bottom: 50px;
 }
 
 .lowerContainer{
@@ -87,6 +93,7 @@ img{
     flex-direction: row;
     gap: 5px;
     align-items: center;
+    flex-grow:1;
 }
 
 .playerIcon{
@@ -105,6 +112,7 @@ img{
     width: 100px;
     background-color: orange;
     align-self: center;
+    flex-grow: .5;
 }
 
 .computerContainer{
@@ -112,6 +120,7 @@ img{
     flex-direction: row-reverse;
     align-items: center;
     gap: 5px;
+    flex-grow: 1;
 
 }
 
