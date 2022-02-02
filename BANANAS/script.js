@@ -3,8 +3,24 @@ const centerBanana = document.querySelector("#center");
 const rightBanana = document.querySelector("#right");
 const resultText = document.querySelector('.resultText');
 
+leftBanana.addEventListener('click',function(){playOnce('left')});
+centerBanana.addEventListener('click',function(){playOnce('center')});
+rightBanana.addEventListener('click',function(){playOnce('right')});
+
 let playerScore = 0;
+
 let computerScore = 0;
+
+const scoreUnits = [
+    ['p1','p2','p3','p4','p5'],
+    ['c1','c2','c3','c4','c5']
+]
+
+const scoreDom = document.querySelectorAll('.scoreUnit');
+
+const choices = ['left','center','right'];
+
+const resultTextStart = 'Only one will survive!'
 
 const roundWinText = [
 'Your banana has proven mightier than your foes!',
@@ -47,11 +63,6 @@ function announceRoundEndText(result){
     }
 }
 
-leftBanana.addEventListener('click',function(){playOnce('left')});
-centerBanana.addEventListener('click',function(){playOnce('center')});
-rightBanana.addEventListener('click',function(){playOnce('right')});
-
-const choices = ['left','center','right'];
 
 function getRandom(randomRange){
     return Math.floor(Math.random()*randomRange);
@@ -95,8 +106,25 @@ function changeScore(result){
     else return;
 }
 
+function drawScore(pScore, cScore){
+    for (i=0; i<pScore; i++){
+        domNug = document.querySelector(`#${scoreUnits[0][i]}`);
+        domNug.style.backgroundColor = 'red';
+    }
+    for (i=0; i<cScore; i++){
+        domNug = document.querySelector(`#${scoreUnits[1][i]}`);
+        domNug.style.backgroundColor = 'red';
+    }
+
+}
+
+function scrubScore(){
+    scoreDom.forEach(element => element.style.backgroundColor = 'yellow');
+}
+
 function updateUI(result){
     announceRoundEndText(result);
+    drawScore(playerScore, computerScore);
 }
 
 function checkEnd(){
@@ -106,9 +134,11 @@ function checkEnd(){
 }
 
 function endGame(){
-    alert('Game Over!');
     playerScore = 0;
     computerScore = 0;
+    resultText.textContent = resultTextStart;
+    alert('Game Over!');
+    scrubScore();
 }
 
 function playOnce(humanChoice){
