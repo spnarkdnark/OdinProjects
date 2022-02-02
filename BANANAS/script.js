@@ -1,7 +1,8 @@
-const leftBanana = document.querySelector("#left")
+const leftBanana = document.querySelector("#left");
 const centerBanana = document.querySelector("#center");
 const rightBanana = document.querySelector("#right");
 const resultText = document.querySelector('.resultText');
+const upperContainer = document.querySelector('.upperContainer');
 
 leftBanana.addEventListener('click',function(){playOnce('left')});
 centerBanana.addEventListener('click',function(){playOnce('center')});
@@ -14,13 +15,13 @@ let computerScore = 0;
 const scoreUnits = [
     ['p1','p2','p3','p4','p5'],
     ['c1','c2','c3','c4','c5']
-]
+];
 
 const scoreDom = document.querySelectorAll('.scoreUnit');
 
 const choices = ['left','center','right'];
 
-const resultTextStart = 'Only one will survive!'
+const resultTextStart = 'Only one will survive!';
 
 const roundWinText = [
 'Your banana has proven mightier than your foes!',
@@ -35,7 +36,20 @@ const roundLoseText = [
 'Embarrassing! Pick a better banana next time!',
 "Clearly you are not getting the hang of this.  Maybe it's time to hang the banana up?",
 'Loser!',
-]
+];
+
+const endButton = document.createElement('div');
+endButton.textContent = '...Play Again?';
+endButton.classList.add('endButton');
+endButton.addEventListener('click', startNew);
+
+function startNew(){
+    scrubScore();
+    upperContainer.removeChild(endButton);
+    playerScore = 0;
+    computerScore = 0;
+    resultText.textContente = resultTextStart;
+}
 
 function getRoundEndText(result){
     if (result === 'human'){
@@ -133,12 +147,20 @@ function checkEnd(){
     }
 }
 
+function whoWon(){
+    return playerScore === 5 ? 'player' : 'computer';
+}
+
 function endGame(){
-    playerScore = 0;
-    computerScore = 0;
-    resultText.textContent = resultTextStart;
-    alert('Game Over!');
-    scrubScore();
+    let winner = whoWon();
+    if (winner === 'player'){
+        resultText.textContent = 'You win!';
+    }
+    else if (winner === 'computer'){
+        resultText.textContent = 'You lose!';
+    }
+
+    upperContainer.appendChild(endButton); 
 }
 
 function playOnce(humanChoice){
