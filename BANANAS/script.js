@@ -48,7 +48,7 @@ function startNew(){
     upperContainer.removeChild(endButton);
     playerScore = 0;
     computerScore = 0;
-    resultText.textContente = resultTextStart;
+    resultText.textContent = resultTextStart;
 }
 
 function getRoundEndText(result){
