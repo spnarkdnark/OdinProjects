@@ -1,4 +1,4 @@
-let gridValue = 8;
+let gridValue = 16;
 
 let sketchContainer = document.querySelector('.sketchContainer');
 
