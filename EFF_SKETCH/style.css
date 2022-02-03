@@ -8,21 +8,24 @@ margin: auto;
 .sketchContainer{
 height: 500px;
 width: 500px;
-background-color: blue;
 display:flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
 margin-top: 100px;
+gap:1px;
 }
 
 .gridRow {
     display: flex;
+    gap:1px;
 }
 
 .gridUnit{
     background-color:white;
-    border: 1px solid blue;
-    height: 31.25px;
-    width: 31.25px;
+    border: 1px solid lightgray;
+}
+
+.gridUnit:hover{
+    background-color:black;
 }
