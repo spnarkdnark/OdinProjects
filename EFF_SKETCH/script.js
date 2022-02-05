@@ -1,6 +1,6 @@
 
 let sketchContainer = document.querySelector('.sketchContainer');
-gridCount = 16;
+let gridCount = 16;
 let gridRow = document.createElement('div');
 gridRow.classList.add('gridRow');
 
