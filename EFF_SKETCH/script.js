@@ -15,6 +15,31 @@ eightButton.addEventListener('click', function(){refreshGrid(8)});
 sixteenButton.addEventListener('click', function(){refreshGrid(16)});
 sixtyFourButton.addEventListener('click', function(){refreshGrid(64)});
 
+let canvas = document.querySelector('#myCanvas');
+let ctx = canvas.getContext('2d');
+let fillColor = 'black';
+ctx.fillRect(170,130,150,150);
+
+
+canvas.addEventListener('mousemove',function(e){getMousePosition(canvas,e)});
+
+
+function getMousePosition(canvas, event){
+    let rect = canvas.getBoundingClientRect();
+    let x = event.clientX - rect.left;
+    let y = event.clientY - rect.top;
+
+    console.log(x,y);
+
+}
+
+let shirtImg = new Image(250,250);
+shirtImg.src = 'assets/shirt.png';
+
+shirtImg.onerror=function(){alert(shirtImg.src+' failed');} 
+
+
+
 let mouseDown = false;
 
 sketchContainer.onmousedown = function() {
@@ -78,6 +103,18 @@ function changeColor(){
     }
 }
 
+function drawShirt(){
+    let gridUnits = document.querySelectorAll('.gridUnit');
+
+    for (i = 0; i < gridUnits.length; i++){
+        if (gridUnits[i].style.backgroundColor === 'black'){
+            ctx.fillRect(170,130,18,18);
+        }
+    }
+}
+
+
+
 function changeColorBrute(){
         this.style.backgroundColor = 'black';
 }
@@ -105,3 +142,4 @@ function refreshGrid(gridValue){
 }
 
 buildGrid(gridCount);
+
