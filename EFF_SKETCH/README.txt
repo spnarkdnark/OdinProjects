@@ -13,4 +13,14 @@ cause the most headaches, but since I've already basically
 finished the toy project in terms of the OdinProject's expectations,
 i'm just havin some fun with it.
 
-<3 uncleBabyBilly
+<3 uncleBabyBilly;
+
+2.6.2022 
+i realize now that building the grid as a boolean state from the start
+would have been a much better approach, only after writing a stupid 
+long convulted and annoying function to convert the backgroundColor
+style property into a properly built array.  I like the project so
+far though and despite its simplicity it has helped me understand a 
+lot about making everything work together 
+
+<3 uncleBabyBilly;
