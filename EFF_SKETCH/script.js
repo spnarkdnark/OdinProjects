@@ -43,6 +43,7 @@ sketchContainer.onmouseup = function() {
 //initialize the canvas context on top of shirt
 let canvas = document.querySelector('#myCanvas');
 let ctx = canvas.getContext('2d');
+ctx.strokeStyle = 'white';
 let fillColor = 'black';
 
 function drawShirt(startX, startY, increment){
@@ -53,11 +54,15 @@ function drawShirt(startX, startY, increment){
         for (p = 0; p < gridState[i].length; p++){
             if (gridState[i][p] === 1){
                 ctx.fillRect(xPos, yPos, increment, increment);
+                ctx.strokeRect(xPos, yPos, increment, increment);
+                xPos += increment;
             }
             else{
-                continue;
+                xPos += increment;
             }
         }
+        yPos += increment;
+        xPos = startX;
     }
 }
 
