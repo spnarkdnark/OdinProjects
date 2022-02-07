@@ -2,7 +2,8 @@
 //initialize DOM variables
 let gridCount = 8;
 let mouseDown = false;
-gridState = [];
+let erasing = false;
+let gridState = [];
 
 //debugging canvas listener
 //canvas.addEventListener('mousemove',function(e){getMousePosition(canvas,e)});
@@ -14,12 +15,14 @@ let eightButton = document.getElementById('eight');
 let sixteenButton = document.getElementById('sixteen');
 let sixtyFourButton = document.getElementById('sixtyfour');
 let trashIcon = document.querySelector('.trashIcon');
+let eraser = document.querySelector('.eraser');
 
 //initialize event listeners
 eightButton.addEventListener('click', function(){refreshGrid(8)});
 sixteenButton.addEventListener('click', function(){refreshGrid(16)});
 sixtyFourButton.addEventListener('click', function(){refreshGrid(64)});
 trashIcon.addEventListener('click', trashClick);
+eraser.addEventListener('click', function(){erasing = true;});
 
 //log mouses position within canvas mostly for debugging
 function getMousePosition(canvas, event){
@@ -37,7 +40,8 @@ sketchContainer.onmousedown = function() {
 sketchContainer.onmouseup = function() {
     mouseDown = false;
     updateGridState();
-    drawShirt(170,130,19);
+    eraseShirt();
+    drawShirt(170,130,150/gridCount);
 }
 
 //initialize the canvas context on top of shirt
@@ -138,13 +142,21 @@ function styleGrid(gridValue){
 }
 
 function changeColor(){
-    if (mouseDown){
+    if (mouseDown && !erasing){
         this.style.backgroundColor = 'black';
+    }
+    else if (mouseDown && erasing) {
+        this.style.backgroundColor = '';
     }
 }
 
 function changeColorBrute(){
+    if (!erasing){    
         this.style.backgroundColor = 'black';
+    }
+    else{
+        this.style.backgroundColor = '';
+    }
 }
 
 function addGridListeners(){
@@ -166,6 +178,8 @@ function refreshGrid(gridValue){
     eraseGrid(sketchContainer);
     buildGrid(gridValue);
     gridCount = gridValue;
+    eraseShirt();
+    erasing = false;
 }
 
 function eraseGrid(container){
