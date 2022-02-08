@@ -16,6 +16,7 @@ let sixteenButton = document.getElementById('sixteen');
 let sixtyFourButton = document.getElementById('sixtyfour');
 let trashIcon = document.querySelector('.trashIcon');
 let eraser = document.querySelector('.eraser');
+let exportButton = document.querySelector('.export');
 
 //initialize event listeners
 eightButton.addEventListener('click', function(){refreshGrid(8)});
@@ -23,6 +24,8 @@ sixteenButton.addEventListener('click', function(){refreshGrid(16)});
 sixtyFourButton.addEventListener('click', function(){refreshGrid(64)});
 trashIcon.addEventListener('click', trashClick);
 eraser.addEventListener('click', function(){erasing = true;});
+exportButton.addEventListener('click', generatePDF);
+
 
 //log mouses position within canvas mostly for debugging
 function getMousePosition(canvas, event){
@@ -111,6 +114,10 @@ function getGridState(){
     }
 
     return tempArray;
+}
+
+function generatePDF(){
+    html2pdf().from(canvas).save();
 }
 
 function updateGridState(){

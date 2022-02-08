@@ -29,7 +29,7 @@ img{
 
 .borderContainer{
     display: flex;
-    border: 2px solid gray;
+    border: 2px solid lightgray;
 }
 
 
