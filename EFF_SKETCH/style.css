@@ -148,3 +148,47 @@ align-items: center;
           opacity: 50%;
       }
   }
+
+
+
+
+
+.everything{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 17in;
+    width: 11in;
+    font-family: Helvetica;
+    font-size: 18px;
+}
+
+img{
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.upperContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.centerContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lowerContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.registration{
+    height: .5in;
+    width: .5in;
+}
+
+.pixelLogo{
+    align-self: center;
+}

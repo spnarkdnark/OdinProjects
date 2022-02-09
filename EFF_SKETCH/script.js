@@ -19,6 +19,8 @@ let eraser = document.querySelector('.eraser');
 let exportButton = document.querySelector('.export');
 let colorSelection = document.querySelector('.colorSelection');
 
+let exportContainer = document.querySelector('#exportTemplate')
+
 //initialize event listeners
 eightButton.addEventListener('click', function(){refreshGrid(8)});
 sixteenButton.addEventListener('click', function(){refreshGrid(16)});
@@ -123,7 +125,7 @@ function getGridState(){
 }
 
 function generatePDF(){
-    html2pdf().from(canvas).save();
+    html2pdf().from(exportContainer).save();
 }
 
 function updateGridState(){
@@ -202,4 +204,3 @@ function eraseGrid(container){
 }
 
 buildGrid(gridCount);
-
