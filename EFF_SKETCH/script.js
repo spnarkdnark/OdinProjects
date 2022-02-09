@@ -19,7 +19,6 @@ let eraser = document.querySelector('.eraser');
 let exportButton = document.querySelector('.export');
 let colorSelection = document.querySelector('.colorSelection');
 
-let exportContainer = document.querySelector('#exportTemplate')
 
 //initialize event listeners
 eightButton.addEventListener('click', function(){refreshGrid(8)});
@@ -32,7 +31,8 @@ colorSelection.addEventListener('click', function(){updateColor(color='black')})
 
 function exportClick(){
     updateGridState();
-    sessionStorage.setItem('gridState', gridState);
+    sessionStorage.setItem('gridState', JSON.stringify(gridState));
+    sessionStorage.setItem('gridCount', gridCount);
     window.open('exportTemplate.html');
 }
 
@@ -73,7 +73,7 @@ function drawShirt(startX, startY, increment){
 
     for (i = 0; i < gridState.length; i++){
         for (p = 0; p < gridState[i].length; p++){
-            if (gridState[i][p] === 1){
+            if (gridState[i][p] === 'black'){
                 ctx.fillRect(xPos, yPos, increment, increment);
                 ctx.strokeRect(xPos, yPos, increment, increment);
                 xPos += increment;
@@ -117,12 +117,7 @@ function getGridState(){
         let children = gridRows[i].children;
 
         for (p = 0; p < children.length; p++){
-            if (children[p].style.backgroundColor === 'black'){
-                tempRow.push(1);
-            }
-            else{
-                tempRow.push(0);
-            }
+            tempRow.push(children[p].style.backgroundColor);
         }
         tempArray.push(tempRow);
     }

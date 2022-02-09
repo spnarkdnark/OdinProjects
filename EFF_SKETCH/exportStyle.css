@@ -25,6 +25,13 @@ img{
     align-items: center;
 }
 
+.exportContainer{
+    height: 8in;
+    width: 8in;
+    display: flex;
+    flex-direction: column;
+}
+
 .lowerContainer{
     display: flex;
     justify-content: space-between;
@@ -37,4 +44,13 @@ img{
 
 .pixelLogo{
     align-self: center;
+}
+
+.gridRow{
+    display: flex;
+    flex-direction: row;
+}
+
+.gridUnit{
+    outline: 1px solid white;
 }
