@@ -27,8 +27,14 @@ sixteenButton.addEventListener('click', function(){refreshGrid(16)});
 sixtyFourButton.addEventListener('click', function(){refreshGrid(64)});
 trashIcon.addEventListener('click', trashClick);
 eraser.addEventListener('click', function(){currentColor = ''});
-exportButton.addEventListener('click', generatePDF);
+exportButton.addEventListener('click', exportClick);
 colorSelection.addEventListener('click', function(){updateColor(color='black')});
+
+function exportClick(){
+    updateGridState();
+    sessionStorage.setItem('gridState', gridState);
+    window.open('exportTemplate.html');
+}
 
 function updateColor(color){
     //update the active color to black, will eventually react to broader color changes
@@ -124,10 +130,6 @@ function getGridState(){
     return tempArray;
 }
 
-function generatePDF(){
-    html2pdf().from(exportContainer).save();
-}
-
 function updateGridState(){
     gridState = getGridState();
 }
@@ -204,3 +206,4 @@ function eraseGrid(container){
 }
 
 buildGrid(gridCount);
+
