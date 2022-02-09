@@ -1,9 +1,9 @@
-
 //initialize DOM variables
 let gridCount = 8;
 let mouseDown = false;
 let erasing = false;
 let gridState = [];
+currentColor = 'black';
 
 //debugging canvas listener
 //canvas.addEventListener('mousemove',function(e){getMousePosition(canvas,e)});
@@ -17,18 +17,24 @@ let sixtyFourButton = document.getElementById('sixtyfour');
 let trashIcon = document.querySelector('.trashIcon');
 let eraser = document.querySelector('.eraser');
 let exportButton = document.querySelector('.export');
+let colorSelection = document.querySelector('.colorSelection');
 
 //initialize event listeners
 eightButton.addEventListener('click', function(){refreshGrid(8)});
 sixteenButton.addEventListener('click', function(){refreshGrid(16)});
 sixtyFourButton.addEventListener('click', function(){refreshGrid(64)});
 trashIcon.addEventListener('click', trashClick);
-eraser.addEventListener('click', function(){erasing = true;});
+eraser.addEventListener('click', function(){currentColor = ''});
 exportButton.addEventListener('click', generatePDF);
+colorSelection.addEventListener('click', function(){updateColor(color='black')});
 
+function updateColor(color){
+    //update the active color to black, will eventually react to broader color changes
+    currentColor = color.toString();
+}
 
-//log mouses position within canvas mostly for debugging
 function getMousePosition(canvas, event){
+    //log mouses position within canvas mostly for debugging
     let rect = canvas.getBoundingClientRect();
     let x = event.clientX - rect.left;
     let y = event.clientY - rect.top;
@@ -125,7 +131,7 @@ function updateGridState(){
 }
 
 function trashClick(){
-    //do these two things when the trash icon is clicked
+    //do these things when the trash icon is clicked
     eraseGrid(sketchContainer);
     buildGrid(gridCount);
     eraseShirt();
@@ -150,7 +156,7 @@ function styleGrid(gridValue){
 
 function changeColor(){
     if (mouseDown && !erasing){
-        this.style.backgroundColor = 'black';
+        this.style.backgroundColor = currentColor;
     }
     else if (mouseDown && erasing) {
         this.style.backgroundColor = '';
@@ -159,7 +165,7 @@ function changeColor(){
 
 function changeColorBrute(){
     if (!erasing){    
-        this.style.backgroundColor = 'black';
+        this.style.backgroundColor = currentColor;
     }
     else{
         this.style.backgroundColor = '';
