@@ -3,7 +3,8 @@ let gridCount = 8;
 let mouseDown = false;
 let erasing = false;
 let gridState = [];
-currentColor = 'black';
+currentColor = 'rgb(0,0,0)';
+buttonColor = '';
 
 //debugging canvas listener
 //canvas.addEventListener('mousemove',function(e){getMousePosition(canvas,e)});
@@ -17,7 +18,7 @@ let sixtyFourButton = document.getElementById('sixtyfour');
 let trashIcon = document.querySelector('.trashIcon');
 let eraser = document.querySelector('.eraser');
 let exportButton = document.querySelector('.export');
-let colorSelection = document.querySelector('.colorSelection');
+let colorInput = document.querySelector('.colorInput');
 
 
 //initialize event listeners
@@ -25,9 +26,14 @@ eightButton.addEventListener('click', function(){refreshGrid(8)});
 sixteenButton.addEventListener('click', function(){refreshGrid(16)});
 sixtyFourButton.addEventListener('click', function(){refreshGrid(64)});
 trashIcon.addEventListener('click', trashClick);
-eraser.addEventListener('click', function(){currentColor = ''});
+eraser.addEventListener('click', function(){currentColor = 'rgb(255,255,255)'});
 exportButton.addEventListener('click', exportClick);
-colorSelection.addEventListener('click', function(){updateColor(color='black')});
+colorInput.addEventListener('input', colorInputButton);
+
+function colorInputButton(event){
+    currentColor = event.target.value;
+    console.log(buttonColor);
+}
 
 function exportClick(){
     updateGridState();
@@ -65,7 +71,6 @@ sketchContainer.onmouseup = function() {
 let canvas = document.querySelector('#myCanvas');
 let ctx = canvas.getContext('2d');
 ctx.strokeStyle = 'white';
-let fillColor = 'black';
 
 function drawShirt(startX, startY, increment){
     let xPos = startX;
@@ -73,13 +78,16 @@ function drawShirt(startX, startY, increment){
 
     for (i = 0; i < gridState.length; i++){
         for (p = 0; p < gridState[i].length; p++){
-            if (gridState[i][p] === 'black'){
-                ctx.fillRect(xPos, yPos, increment, increment);
-                ctx.strokeRect(xPos, yPos, increment, increment);
+            if (gridState[i][p] === ''){
                 xPos += increment;
+                continue;
             }
             else{
-                xPos += increment;
+            ctx.fillStyle = gridState[i][p];
+            console.log(ctx.fillStyle);
+            ctx.fillRect(xPos, yPos, increment, increment);
+            ctx.strokeRect(xPos, yPos, increment, increment);
+            xPos += increment;
             }
         }
         yPos += increment;
@@ -154,21 +162,14 @@ function styleGrid(gridValue){
 }
 
 function changeColor(){
-    if (mouseDown && !erasing){
+    if (mouseDown){
         this.style.backgroundColor = currentColor;
     }
-    else if (mouseDown && erasing) {
-        this.style.backgroundColor = '';
-    }
+
 }
 
 function changeColorBrute(){
-    if (!erasing){    
-        this.style.backgroundColor = currentColor;
-    }
-    else{
-        this.style.backgroundColor = '';
-    }
+   this.style.backgroundColor = currentColor;
 }
 
 function addGridListeners(){

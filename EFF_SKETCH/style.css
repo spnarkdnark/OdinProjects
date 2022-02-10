@@ -148,3 +148,9 @@ align-items: center;
           opacity: 50%;
       }
   }
+
+  .colorInput{
+      height: 50px;
+      width: 50px;
+      flex-shrink: 0;
+  }
