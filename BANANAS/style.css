@@ -51,6 +51,28 @@ img{
     height: 300px;
 }
 
+.winnerBanana{
+    animation: winnerBanana 2s infinite alternate;
+}
+
+@keyframes winnerBanana{
+    0%{
+        background-color: lightyellow;
+    }
+    25%{
+        background-color: lightcoral;
+    }
+    50%{
+        background-color: lightgreen;
+    }
+    75%{
+        background-color: lightblue;
+    }
+    100%{
+        background-color: pink;
+    }
+}
+
 
 @keyframes MoveUpDown {
     0%, 100% {
@@ -143,5 +165,15 @@ img{
     display: flex;
     justify-content: center;
     align-items: center;
+}
 
+.endButton:hover{
+    cursor: pointer;
+    background-color: rgb(241, 196, 81);
+}
+
+@keyframes fade {
+    100%{
+        opacity: 50%;
+    }
 }

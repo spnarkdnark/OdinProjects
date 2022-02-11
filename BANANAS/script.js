@@ -5,6 +5,7 @@ const rightBanana = document.querySelector("#right");
 const resultText = document.querySelector('.resultText');
 const upperContainer = document.querySelector('.upperContainer');
 const scoreDom = document.querySelectorAll('.scoreUnit');
+let gameOver = false;
 
 //build the endButton, which appears on game end
 const endButton = document.createElement('div');
@@ -13,9 +14,9 @@ endButton.classList.add('endButton');
 endButton.addEventListener('click', startNew);
 
 //include event listeners for the bananas
-leftBanana.addEventListener('click',function(){playOnce('left')});
-centerBanana.addEventListener('click',function(){playOnce('center')});
-rightBanana.addEventListener('click',function(){playOnce('right')});
+leftBanana.addEventListener('click',function(){if (!gameOver) {playOnce('left')}});
+centerBanana.addEventListener('click',function(){if (!gameOver) {playOnce('center')}});
+rightBanana.addEventListener('click',function(){if (!gameOver) {playOnce('right')}});
 
 //init some stats and data used for scoring/rendering 
 let playerScore = 0;
@@ -52,6 +53,8 @@ function startNew(){
     playerScore = 0;
     computerScore = 0;
     resultText.textContent = resultTextStart;
+    gameOver = false;
+    upperContainer.classList.remove('winnerBanana');
 }
 
 function getRoundEndText(result){
@@ -170,12 +173,14 @@ function endGame(){
     let winner = whoWon();
     if (winner === 'player'){
         resultText.textContent = 'You win!';
+        upperContainer.classList.add('winnerBanana');
     }
     else if (winner === 'computer'){
         resultText.textContent = 'You lose!';
     }
 
-    upperContainer.appendChild(endButton); 
+    upperContainer.appendChild(endButton);
+    gameOver = true;
 }
 
 function playOnce(humanChoice){

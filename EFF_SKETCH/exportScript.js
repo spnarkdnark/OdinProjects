@@ -1,7 +1,8 @@
+
 let gridState = JSON.parse(sessionStorage.getItem('gridState'));
 let gridCount = sessionStorage.getItem('gridCount');
 let exportContainer = document.querySelector('.exportContainer');
-
+let pdfContainer = document.querySelector('.everything');
 
 function translateArtwork(state, count, container){
     let scale = container.clientHeight / gridCount;

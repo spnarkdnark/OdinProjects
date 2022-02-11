@@ -133,8 +133,8 @@ align-items: center;
 }
 
 .gridUnit:hover{
-        background-color:black;
         animation: blinker .75s linear infinite;
+        background-Color: rgb(245, 243, 243);
   }
   
   @keyframes blinker {
