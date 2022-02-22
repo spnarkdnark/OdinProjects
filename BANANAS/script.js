@@ -5,6 +5,7 @@ const rightBanana = document.querySelector("#right");
 const resultText = document.querySelector('.resultText');
 const upperContainer = document.querySelector('.upperContainer');
 const scoreDom = document.querySelectorAll('.scoreUnit');
+const boom = document.querySelector('.boom');
 let gameOver = false;
 
 //build the endButton, which appears on game end
@@ -49,12 +50,12 @@ const roundLoseText = [
 function startNew(){
     //start a new game of BANANAS, scrub the scoreboard and reset some values
     scrubScore();
-    upperContainer.removeChild(endButton);
+    boom.removeChild(endButton);
     playerScore = 0;
     computerScore = 0;
     resultText.textContent = resultTextStart;
     gameOver = false;
-    upperContainer.classList.remove('winnerBanana');
+    resultText.classList.remove('winnerBanana');
 }
 
 function getRoundEndText(result){
@@ -173,13 +174,13 @@ function endGame(){
     let winner = whoWon();
     if (winner === 'player'){
         resultText.textContent = 'You win!';
-        upperContainer.classList.add('winnerBanana');
+        resultText.classList.add('winnerBanana');
     }
     else if (winner === 'computer'){
         resultText.textContent = 'You lose!';
     }
 
-    upperContainer.appendChild(endButton);
+    boom.appendChild(endButton);
     gameOver = true;
 }
 

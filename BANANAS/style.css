@@ -53,23 +53,24 @@ img{
 
 .winnerBanana{
     animation: winnerBanana 2s infinite alternate;
+    font-size: 25px;
 }
 
 @keyframes winnerBanana{
     0%{
-        background-color: lightyellow;
+        color: lightyellow;
     }
     25%{
-        background-color: lightcoral;
+        color: lightcoral;
     }
     50%{
-        background-color: lightgreen;
+        color: lightgreen;
     }
     75%{
-        background-color: lightblue;
+        color: lightblue;
     }
     100%{
-        background-color: pink;
+        color: pink;
     }
 }
 
@@ -136,8 +137,10 @@ img{
 .boom{
     height: 100px;
     width: 100px;
-    background-color: orange;
-    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
 }
 
 .computerContainer{
